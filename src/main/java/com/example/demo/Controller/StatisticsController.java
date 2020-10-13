@@ -2,6 +2,8 @@ package com.example.demo.Controller;
 
 
 import com.example.demo.Modells.Statistics;
+import com.example.demo.Modells.User;
+import com.example.demo.Modells.Wares;
 import com.example.demo.Services.StatisticsServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,5 +38,12 @@ public class StatisticsController {
         return statisticsService.update(statistics);
     }
 
+    @GetMapping(value = "/statistics/selectAllStatisticsDESC")
+    public List<Statistics> selectAllStatisticsDESC(){return statisticsService.selectAllStatisticsDESC();}
+
+    @GetMapping(value = "/statistics/selectOneStatistics/{userIN}")
+    public List<Statistics> selectOneStatistics(@PathVariable("userIN") Integer userIN){
+        return statisticsService.selectOneStatistics(userIN);
+    }
 
 }

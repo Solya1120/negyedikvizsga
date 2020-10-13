@@ -2,6 +2,7 @@ package com.example.demo.Controller;
 
 
 
+import com.example.demo.Modells.User;
 import com.example.demo.Modells.Wares;
 import com.example.demo.Services.WaresServiceImpl;
 import org.springframework.web.bind.annotation.*;
@@ -36,6 +37,9 @@ public class WaresController {
     public Wares update(Wares wares) {
         return waresService.update(wares);
     }
+
+    @GetMapping(value = "/wares/top3")
+    public List<Wares> selectTop3Wares(){return waresService.selectTop3Wares();}
 
 
 }

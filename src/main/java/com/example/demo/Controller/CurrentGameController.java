@@ -2,6 +2,7 @@ package com.example.demo.Controller;
 
 
 import com.example.demo.Modells.CurrentGame;
+import com.example.demo.Modells.Statistics;
 import com.example.demo.Services.CurrentGameServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,6 +35,14 @@ public class CurrentGameController {
     @PostMapping(value = "/currentGame/update")
     public CurrentGame update(CurrentGame currentGame) {
         return currentGameService.update(currentGame);
+    }
+
+    @GetMapping(value = "/currentGame/selectAllPlayerDESC")
+    public List<CurrentGame> selectAllPlayerDESC(){return currentGameService.selectAllPlayerDESC();}
+
+    @GetMapping(value = "/currentGame/selectOnePlayer/{userIN}")
+    public List<CurrentGame> selectOnePlayer(@PathVariable("userIN") Integer userIN){
+        return currentGameService.selectOnePlayer(userIN);
     }
 
 

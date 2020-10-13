@@ -13,4 +13,5 @@ public interface WaresService {
     Wares create(Wares wares);
     void delete(Integer id);
     Wares update(Wares wares);
+    List<Wares> selectTop3Wares();
 }
