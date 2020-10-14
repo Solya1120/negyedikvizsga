@@ -4,10 +4,15 @@ package com.example.demo.Services;
 import com.example.demo.Modells.Statistics;
 import com.example.demo.Modells.User;
 import com.example.demo.Repository.StatisticsRepository;
+import com.example.demo.Repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
+import javax.persistence.Query;
 import java.util.List;
 import java.util.Optional;
 
@@ -63,4 +68,19 @@ public class StatisticsServiceImpl implements StatisticsService{
         throw new NoResultException("Nincs találat");
 
     }
+
+    @Override
+    public List<Object> joinTop3Statistics() {
+        List<Object> statistics = statisticsRepository.joinTop3Statistics();
+
+        if(!CollectionUtils.isEmpty(statistics)) {
+            return statistics;
+        }
+
+        throw new NoResultException("Nincs találat");
+
+    }
+
+
+
 }

@@ -3,7 +3,10 @@ package com.example.demo.Controller;
 
 import com.example.demo.Modells.CurrentGame;
 import com.example.demo.Modells.Statistics;
+import com.example.demo.Services.CurrentGameService;
 import com.example.demo.Services.CurrentGameServiceImpl;
+import com.example.demo.Services.StatisticsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -45,5 +48,19 @@ public class CurrentGameController {
         return currentGameService.selectOnePlayer(userIN);
     }
 
+    @Autowired
+    CurrentGameService CurrentGameService;
+
+    @GetMapping("/currentGame/checkPlayerByUsername/{usernameIN}")
+    public List<Object> checkPlayerByUsername(@PathVariable("usernameIN") String usernameIN)
+    {
+        return CurrentGameService.checkPlayerByUsername(usernameIN);
+    }
+
+    @GetMapping("/currentGame/selectUserNotPlayer")
+    public List<Object> selectUserNotPlayer()
+    {
+        return CurrentGameService.selectUserNotPlayer();
+    }
 
 }

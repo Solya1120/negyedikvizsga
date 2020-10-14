@@ -14,4 +14,6 @@ public interface CurrentGameService {
     CurrentGame update(CurrentGame currentGame);
     List<CurrentGame> selectAllPlayerDESC();
     List<CurrentGame> selectOnePlayer(Integer userIN);
+    List<Object> checkPlayerByUsername(String usernameIN);
+    List<Object> selectUserNotPlayer();
 }

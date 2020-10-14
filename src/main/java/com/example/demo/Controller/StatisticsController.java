@@ -4,7 +4,9 @@ package com.example.demo.Controller;
 import com.example.demo.Modells.Statistics;
 import com.example.demo.Modells.User;
 import com.example.demo.Modells.Wares;
+import com.example.demo.Services.StatisticsService;
 import com.example.demo.Services.StatisticsServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -45,5 +47,15 @@ public class StatisticsController {
     public List<Statistics> selectOneStatistics(@PathVariable("userIN") Integer userIN){
         return statisticsService.selectOneStatistics(userIN);
     }
+
+    @Autowired
+    StatisticsService StatisticsService;
+
+    @GetMapping("/joinTop3Statistics")
+    public List<Object> joinTop3Statistics()
+    {
+        return StatisticsService.joinTop3Statistics();
+    }
+
 
 }

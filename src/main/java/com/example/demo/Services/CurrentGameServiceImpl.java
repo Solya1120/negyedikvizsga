@@ -63,4 +63,28 @@ public class CurrentGameServiceImpl implements CurrentGameService{
         throw new NoResultException("Nincs találat");
 
     }
+
+    @Override
+    public List<Object> checkPlayerByUsername(String usernameIN) {
+        List<Object> currentGame = currentGameRepository.checkPlayerByUsername( usernameIN);
+
+        if(!CollectionUtils.isEmpty(currentGame)) {
+            return currentGame;
+        }
+
+        throw new NoResultException("Nincs találat");
+
+    }
+
+    @Override
+    public List<Object> selectUserNotPlayer() {
+        List<Object> currentGame = currentGameRepository.selectUserNotPlayer();
+
+        if(!CollectionUtils.isEmpty(currentGame)) {
+            return currentGame;
+        }
+
+        throw new NoResultException("Nincs találat");
+
+    }
 }

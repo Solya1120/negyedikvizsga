@@ -22,5 +22,7 @@ public class Statistics {
     @Positive
     private Integer totalScore;
 
+    @NotNull
+    @Positive
     private Integer userId;
 }

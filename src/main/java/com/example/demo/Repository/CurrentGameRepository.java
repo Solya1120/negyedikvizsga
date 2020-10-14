@@ -18,4 +18,10 @@ public interface CurrentGameRepository extends JpaRepository<CurrentGame, Intege
 
     @Query(value = "SELECT * FROM `current_game` WHERE `current_game`.`user_id`= :userIN", nativeQuery = true)
     List<CurrentGame>  selectOnePlayer(@Param("userIN") Integer userIN);
+
+    @Query(value = "SELECT `user`.`username`, `current_game`.`color`,`current_game`.`balance` FROM `user` RIGHT JOIN `current_game`  ON `user`.`id`=`current_game`.`user_id` WHERE `user`.`username`= :usernameIN", nativeQuery = true)
+    List<Object> checkPlayerByUsername(@Param("usernameIN") String usernameIN);
+
+    @Query(value = "SELECT `user`.`username` FROM `user` LEFT JOIN `current_game` ON `user`.`id` = `current_game`.`user_id` WHERE `current_game`.`user_id` IS NULL", nativeQuery = true)
+    List<Object> selectUserNotPlayer();
 }

@@ -14,4 +14,6 @@ public interface StatisticsService {
     Statistics update(Statistics statistics);
     List<Statistics> selectAllStatisticsDESC();
     List<Statistics> selectOneStatistics(Integer userIN);
+    List<Object> joinTop3Statistics();
+
 }
